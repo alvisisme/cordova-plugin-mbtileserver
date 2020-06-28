@@ -1,0 +1,25 @@
+{
+  "name": "com.plugin.mbtileserver",
+  "version": "0.1.0",
+  "description": "Mbtiles web server cordova plugin for Android.",
+  "cordova": {
+    "id": "com.plugin.mbtileserver",
+    "platforms": [
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alvisisme/cordova-plugin-mbtileserver.git"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "author": "Alvis Zhao",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/alvisisme/cordova-plugin-mbtileserver/issues"
+  },
+  "homepage": "https://github.com/alvisisme/cordova-plugin-mbtileserver#readme"
+}
