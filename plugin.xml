@@ -1,16 +1,23 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="com.plugin.mbtileserver" version="0.1.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+<plugin id="cordova-plugin-mbtileserver" version="0.1.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
     <name>MbtileServer</name>
     <js-module name="MbtileServer" src="www/MbtileServer.js">
         <clobbers target="cordova.plugins.MbtileServer" />
     </js-module>
     <platform name="android">
+        <framework src="org.nanohttpd:nanohttpd:2.3.1" />
+        <config-file parent="/manifest" target="AndroidManifest.xml">
+            <uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+        </config-file>
         <config-file parent="/*" target="res/xml/config.xml">
             <feature name="MbtileServer">
                 <param name="android-package" value="com.plugin.mbtileserver.MbtileServer" />
             </feature>
         </config-file>
         <config-file parent="/*" target="AndroidManifest.xml"></config-file>
-        <source-file src="src/android/MbtileServer.java" target-dir="src/com/plugin/mbtileserver/MbtileServer" />
+        <source-file src="src/android/MbtileServer.java" target-dir="src/com/plugin/mbtileserver" />
+        <source-file src="src/android/WebServer.java" target-dir="src/com/plugin/mbtileserver" />
     </platform>
 </plugin>

@@ -64,7 +64,7 @@ Mbtiles服务插件，通过web服务接口访问mbtiles地图数据。
 
 1. 创建插件
     ```bash
-    plugman create --name MbtileServer --plugin_id com.plugin.mbtileserver --plugin_version 0.1.0
+    plugman create --name MbtileServer --plugin_id cordova-plugin-mbtileserver --plugin_version 0.1.0
     ```
 
 1. 添加插件平台
