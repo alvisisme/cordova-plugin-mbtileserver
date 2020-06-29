@@ -6,10 +6,17 @@ const STOP_FUNCTION = 'stop';
 
 exports.start = function (file, port, success, error) {
     let params = [];
-    if (file) {
+    if (typeof file === 'string') {
       params.push(file);
+    } else {
+      if (typeof error === 'function') {
+        error('Arguments Error')
+        return
+      } else {
+        throw new Error('Arguments Error')
+      }
     }
-    if (port) {
+    if (typeof port === 'number') {
       params.push(port);
     }
     exec(success, error, MBTILESERVER_CLASS, START_FUNCTION, params);

@@ -7,6 +7,8 @@ import org.apache.cordova.PluginResult;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import java.io.File;
+
 public class MbtileServer extends CordovaPlugin {
 
     public WebServer webserver;
@@ -32,6 +34,7 @@ public class MbtileServer extends CordovaPlugin {
     private void start(JSONArray args, CallbackContext callbackContext) throws JSONException {
         int port = 8080;
         String filePath = null;
+
         if (args.length() == 1) {
             filePath = args.getString(0);
         }
@@ -40,8 +43,9 @@ public class MbtileServer extends CordovaPlugin {
             port = args.getInt(1);
         }
 
-        if (filePath == null) {
-            callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.ERROR, "Cannot get filepath"));
+        File file = new File(filePath);
+        if (!file.exists()) {
+            callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.ERROR, "Cannot get file"));
             return;
         }
 
@@ -58,6 +62,7 @@ public class MbtileServer extends CordovaPlugin {
             return;
         }
         callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK));
+        return;
     }
 
     /**
@@ -65,11 +70,12 @@ public class MbtileServer extends CordovaPlugin {
      * @param args
      * @param callbackContext
      */
-    private void stop(JSONArray args, CallbackContext callbackContext) throws JSONException {
+    private void stop(JSONArray args, CallbackContext callbackContext) {
         if (this.webserver != null) {
             this.webserver.stop();
             this.webserver = null;
+            callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK));
         }
-        callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK));
+        callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.ERROR, "Server is not running"));
     }
 }
