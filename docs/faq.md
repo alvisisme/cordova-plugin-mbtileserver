@@ -21,8 +21,8 @@
     cordova工程config.xml配置样例如下:
     ```xml
     <platform name="android">
-        <edit-config file="AndroidManifest.xml" target="/manifest/application" mode="merge">
-            <application android:usesCleartextTraffic="true"/>
+        <edit-config file="AndroidManifest.xml" target="/manifest/application" mode="merge">
+            <application android:usesCleartextTraffic="true"/>
         </edit-config>
     </platform>
     ```
